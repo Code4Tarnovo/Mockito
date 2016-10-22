@@ -7,11 +7,11 @@ import java.util.Map;
  * @author MartinMilev
  *         <martinmariusmilev@gmail.com>
  */
-public class HtmlHelper {
+public class HtmlReplacer implements Replacer{
     private Map<String,String> values = new HashMap<String,String>();
     private String html;
 
-    public HtmlHelper(String html) {
+    public HtmlReplacer(String html) {
         this.html = html;
     }
 
