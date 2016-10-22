@@ -4,10 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by zumba on 22.10.16.
- *
- * @author Alexander Vladimirov
- *         <alexandervladimirov1902@gmail.com>
+ * @author MartinMilev
+ *         <martinmariusmilev@gmail.com>
  */
 public class HtmlHelper {
     private Map<String,String> values = new HashMap<String,String>();
@@ -21,4 +19,12 @@ public class HtmlHelper {
         values.put(placeholder,value);
     }
 
+    public String evaluate() {
+        String result = html;
+        for (String placeHolder : values.keySet()) {
+            result = result.replaceAll("\\{\\{" + placeHolder + "\\}\\}", values.get(placeHolder));
+        }
+
+        return result;
+    }
 }
