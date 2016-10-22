@@ -40,7 +40,7 @@ public class PersistentDestinationRepository implements DestinationRepository {
 
     @Override
     public List<Destination> getByName(String name) {
-        String query = "SELECT * FROM DESTINATION WHERE NAME = "+name;
+        String query = "SELECT * FROM DESTINATION WHERE NAME='"+name+"'";
         return dataStore.fetchRows(query, resultSet -> {
             try {
                 return new Destination(resultSet.getString(1),resultSet.getString(2), resultSet.getString(3), resultSet.getString(4),resultSet.getDouble(5));

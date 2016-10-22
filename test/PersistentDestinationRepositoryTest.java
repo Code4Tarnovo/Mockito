@@ -35,13 +35,22 @@ public class PersistentDestinationRepositoryTest {
 
 
     @Test
-    public void refisteringDestinationsTest() throws Exception {
+    public void registeringDestinationsTest() throws Exception {
         List<Destination> expected=new LinkedList<>();
         expected.add(destination);
         expected.add(destination2);
         List<Destination> actual=destinationRepository.getAll();
         System.out.println(actual);
         assertThat(actual,is(expected));
+    }
+
+    @Test
+    public void getByNameTest() throws Exception {
+        List<Destination> expected=new LinkedList<>();
+        expected.add(destination);
+        List<Destination> actual=destinationRepository.getByName("asd");
+        assertThat(actual,is(expected));
+
 
     }
 
