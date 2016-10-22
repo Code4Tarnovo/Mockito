@@ -8,7 +8,9 @@ import java.util.List;
 public interface DestinationRepository {
     void register(Destination destination);
 
-    Destination getByName(String name);
+    List<Destination> getAll();
+
+    List<Destination> getByName(String name);
 
     List<Destination> getByType(String type);
 

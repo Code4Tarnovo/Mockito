@@ -7,6 +7,8 @@ import org.eclipse.jetty.plus.servlet.ServletHandler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHolder;
 
+import static sun.net.www.protocol.http.AuthCacheValue.Type.Server;
+
 /**
  * @author MartinMilev
  *         <martinmariusmilev@gmail.com>
