@@ -21,7 +21,7 @@ public class ConnectionProvider implements Provider<Connection> {
         Connection connection = null;
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/" + database + "?autoReconnect=true&useSSL=false", "root", "Alroy93102339640");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/" + database + "?autoReconnect=true&useSSL=false", "root", "123123");
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {

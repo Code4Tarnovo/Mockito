@@ -24,7 +24,6 @@ public class HtmlHelper {
         for (String placeHolder : values.keySet()) {
             result = result.replaceAll("\\{\\{" + placeHolder + "\\}\\}", values.get(placeHolder));
         }
-
         return result;
     }
 }
