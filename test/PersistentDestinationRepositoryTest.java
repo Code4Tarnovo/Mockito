@@ -26,7 +26,7 @@ public class PersistentDestinationRepositoryTest {
     Destination destination = new Destination("asd", "asd", "asd", "asd", 1d);
     Destination destination2 = new Destination("asdd", "asd", "asdd", "asdd", 2d);
     Destination destination3 = new Destination("asdd", "asd", "asdd", "asdd", 2d);
-    Destination destination4 = new Destination("asdd", "asdd", "asdd", "asdd", 2d);
+    Destination destination4 = new Destination("asdd", "asdd", "asdd", "asdd", 3d);
 
     @Before
     public void fillup() {
@@ -43,8 +43,9 @@ public class PersistentDestinationRepositoryTest {
         List<Destination> expected = new LinkedList<>();
         expected.add(destination);
         expected.add(destination2);
-        List<Destination> actual = destinationRepository.getAll();
-        System.out.println(actual);
+        expected.add(destination3);
+        expected.add(destination4);
+        List<Destination> actual = destinationRepository.getAll();;
         assertThat(actual, is(expected));
     }
 
@@ -63,6 +64,17 @@ public class PersistentDestinationRepositoryTest {
         expected.add(destination2);
         expected.add(destination2);
         List<Destination> actual=destinationRepository.getByType("asd");
+        assertThat(actual,is(expected));
+    }
+
+    @Test
+    public void getByAscendint() throws Exception {
+        List<Destination> expected=new LinkedList<>();
+        expected.add(destination4);
+        expected.add(destination3);
+        expected.add(destination2);
+        expected.add(destination);
+        List<Destination> actual=destinationRepository.getByRatingOrdered();
         assertThat(actual,is(expected));
     }
 
