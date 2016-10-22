@@ -20,7 +20,7 @@ public class PersistentDestinationRepository implements DestinationRepository {
     @Override
     public void register(Destination destination) {
         String query = "INSERT INTO DESTINATION VALUES (?,?,?,?,?)";
-        dataStore.update(query,destination.name,destination.adress,destination.info,destination.info,destination.rating);
+        dataStore.update(query,destination.name,destination.type,destination.adress,destination.info,destination.rating);
     }
 
     @Override

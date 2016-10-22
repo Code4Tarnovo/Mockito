@@ -23,8 +23,8 @@ public class PersistentDestinationRepositoryTest {
     DataStore dataStore = new DataStore(connectionProvider);
     PersistentDestinationRepository destinationRepository = new PersistentDestinationRepository(dataStore);
 
-    Destination destination = new Destination("asd", "asd", "asd", "asd", 1.1);
-    Destination destination2 = new Destination("asdd", "asdd", "asdd", "asdd", 2.2);
+    Destination destination = new Destination("asd", "asd", "asd", "asd", 1d);
+    Destination destination2 = new Destination("asdd", "asdd", "asdd", "asdd", 2d);
 
     @Before
     public void fillup() {
@@ -40,6 +40,7 @@ public class PersistentDestinationRepositoryTest {
         expected.add(destination);
         expected.add(destination2);
         List<Destination> actual=destinationRepository.getAll();
+        System.out.println(actual);
         assertThat(actual,is(expected));
 
     }
