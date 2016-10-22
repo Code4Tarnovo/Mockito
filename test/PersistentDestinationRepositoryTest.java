@@ -24,34 +24,58 @@ public class PersistentDestinationRepositoryTest {
     PersistentDestinationRepository destinationRepository = new PersistentDestinationRepository(dataStore);
 
     Destination destination = new Destination("asd", "asd", "asd", "asd", 1d);
-    Destination destination2 = new Destination("asdd", "asdd", "asdd", "asdd", 2d);
+    Destination destination2 = new Destination("asdd", "asd", "asdd", "asdd", 2d);
+    Destination destination3 = new Destination("asdd", "asd", "asdd", "asdd", 2d);
+    Destination destination4 = new Destination("asdd", "asdd", "asdd", "asdd", 3d);
 
     @Before
     public void fillup() {
         deleteTable();
         destinationRepository.register(destination);
         destinationRepository.register(destination2);
+        destinationRepository.register(destination3);
+        destinationRepository.register(destination4);
     }
 
 
     @Test
     public void registeringDestinationsTest() throws Exception {
-        List<Destination> expected=new LinkedList<>();
+        List<Destination> expected = new LinkedList<>();
         expected.add(destination);
         expected.add(destination2);
-        List<Destination> actual=destinationRepository.getAll();
-        System.out.println(actual);
-        assertThat(actual,is(expected));
+        expected.add(destination3);
+        expected.add(destination4);
+        List<Destination> actual = destinationRepository.getAll();;
+        assertThat(actual, is(expected));
     }
 
     @Test
     public void getByNameTest() throws Exception {
-        List<Destination> expected=new LinkedList<>();
+        List<Destination> expected = new LinkedList<>();
         expected.add(destination);
-        List<Destination> actual=destinationRepository.getByName("asd");
+        List<Destination> actual = destinationRepository.getByName("asd");
+        assertThat(actual, is(expected));
+    }
+
+    @Test
+    public void getByType() throws Exception {
+        List<Destination> expected = new LinkedList<>();
+        expected.add(destination);
+        expected.add(destination2);
+        expected.add(destination2);
+        List<Destination> actual=destinationRepository.getByType("asd");
         assertThat(actual,is(expected));
+    }
 
-
+    @Test
+    public void getByAscendint() throws Exception {
+        List<Destination> expected=new LinkedList<>();
+        expected.add(destination4);
+        expected.add(destination3);
+        expected.add(destination2);
+        expected.add(destination);
+        List<Destination> actual=destinationRepository.getByRatingOrdered();
+        assertThat(actual,is(expected));
     }
 
     private void deleteTable() {

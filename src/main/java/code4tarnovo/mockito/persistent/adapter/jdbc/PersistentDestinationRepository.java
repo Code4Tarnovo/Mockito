@@ -53,11 +53,27 @@ public class PersistentDestinationRepository implements DestinationRepository {
 
     @Override
     public List<Destination> getByType(String type) {
-        return null;
+        String query = "SELECT * FROM DESTINATION WHERE TYPE='"+type+"'";
+        return dataStore.fetchRows(query, resultSet -> {
+            try {
+                return new Destination(resultSet.getString(1),resultSet.getString(2), resultSet.getString(3), resultSet.getString(4),resultSet.getDouble(5));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return null;
+        });
     }
 
     @Override
     public List<Destination> getByRatingOrdered() {
-        return null;
+        String query = "SELECT * FROM DESTINATION ORDER BY RATING DESC";
+        return dataStore.fetchRows(query, resultSet -> {
+            try {
+                return new Destination(resultSet.getString(1),resultSet.getString(2), resultSet.getString(3), resultSet.getString(4),resultSet.getDouble(5));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return null;
+        });
     }
 }
