@@ -4,11 +4,11 @@ package code4tarnovo.mockito.core;
  * Created by alroy on 22.10.16.
  */
 public class Destination {
-    private final String name;
-    private final String type;
-    private final String adress;
-    private final String info;
-    private final Double rating;
+    public final String name;
+    public final String type;
+    public final String adress;
+    public final String info;
+    public final Double rating;
 
     public Destination(String name, String type, String adress, String info, Double rating) {
         this.name = name;
