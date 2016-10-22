@@ -12,7 +12,6 @@ import java.sql.SQLException;
 public class ConnectionProvider implements Provider<Connection> {
     private final String database;
 
-
     public ConnectionProvider(String database) {
         this.database = database;
     }
