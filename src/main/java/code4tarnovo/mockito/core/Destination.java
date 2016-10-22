@@ -10,6 +10,17 @@ public class Destination {
     public final String info;
     public final Double rating;
 
+    @Override
+    public String toString() {
+        return "Destination{" +
+                "name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", adress='" + adress + '\'' +
+                ", info='" + info + '\'' +
+                ", rating=" + rating +
+                '}';
+    }
+
     public Destination(String name, String type, String adress, String info, Double rating) {
         this.name = name;
         this.type = type;

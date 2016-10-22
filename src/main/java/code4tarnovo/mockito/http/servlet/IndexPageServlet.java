@@ -1,5 +1,7 @@
 package code4tarnovo.mockito.http.servlet;
 
+import code4tarnovo.mockito.core.HtmlHelper;
+import code4tarnovo.mockito.persistent.adapter.jdbc.PersistentDestinationRepository;
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 
@@ -24,6 +26,7 @@ public class IndexPageServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         resp.setContentType("text/html");
         resp.setStatus(HttpServletResponse.SC_OK);
         PrintWriter writer = resp.getWriter();
