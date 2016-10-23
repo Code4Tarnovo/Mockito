@@ -42,11 +42,13 @@ public class InfoPageServlet extends HttpServlet {
         }
 
         Destination destination = repo.getByName(req.getParameter("link")).get(0);
+        System.out.println(destination.name);
         replacer.setValue("name", destination.name);
         replacer.setValue("type", destination.type);
         replacer.setValue("address", destination.adress);
 
-        writer.print(replacer.evaluate());
+        String page = replacer.evaluate();
+        writer.print(page);
         writer.flush();
     }
 }

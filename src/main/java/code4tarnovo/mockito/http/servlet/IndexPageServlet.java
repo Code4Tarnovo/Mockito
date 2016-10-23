@@ -36,11 +36,11 @@ public class IndexPageServlet extends HttpServlet {
         List<Destination> destinations = repo.getAll();
 
         for (Destination each : destinations) {
-            String content = "<div class=\"col-sm-4\">\n" +
-                    "<p>" + each.name
+            String content = "<div class=\"col-sm-4\">\n"
+                    + "<img src=/resources/" + each.name.replaceAll(" ", "") + ".jpg>"
+                    + "<p>" + each.name
                     + "</p><p>" + each.type
                     + "</p><p>" + each.adress
-                    + "</p><p>" + each.name
                     + "</p><a href=\"/?link="+each.name+"\">"+each.name+"</a></div>";
             replacer.setValue("destintion",content);
         }
@@ -49,7 +49,8 @@ public class IndexPageServlet extends HttpServlet {
             resp.sendRedirect("/info");
         }
 
-        writer.print(replacer.evaluate());
+        String page = replacer.evaluate();
+        writer.print(page);
         writer.flush();
     }
 }

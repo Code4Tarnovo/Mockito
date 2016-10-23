@@ -7,8 +7,8 @@ import java.util.Map;
  * @author MartinMilev
  *         <martinmariusmilev@gmail.com>
  */
-public class HtmlReplacer implements Replacer{
-    private Map<String,String> values = new HashMap<String,String>();
+public class HtmlReplacer implements Replacer {
+    private Map<String, String> values = new HashMap<String, String>();
     private String html;
 
     public HtmlReplacer(String html) {
@@ -16,7 +16,7 @@ public class HtmlReplacer implements Replacer{
     }
 
     public void setValue(String placeholder, String value) {
-        values.put(placeholder,value);
+        values.put(placeholder, value);
     }
 
     public String evaluate() {

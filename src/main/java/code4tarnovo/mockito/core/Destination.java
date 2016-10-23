@@ -37,20 +37,7 @@ public class Destination {
         Destination that = (Destination) o;
 
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (type != null ? !type.equals(that.type) : that.type != null) return false;
-        if (adress != null ? !adress.equals(that.adress) : that.adress != null) return false;
-        if (info != null ? !info.equals(that.info) : that.info != null) return false;
-        return rating != null ? rating.equals(that.rating) : that.rating == null;
+        return type != null ? type.equals(that.type) : that.type == null;
 
-    }
-
-    @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (type != null ? type.hashCode() : 0);
-        result = 31 * result + (adress != null ? adress.hashCode() : 0);
-        result = 31 * result + (info != null ? info.hashCode() : 0);
-        result = 31 * result + (rating != null ? rating.hashCode() : 0);
-        return result;
     }
 }
