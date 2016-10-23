@@ -2,12 +2,8 @@ package code4tarnovo.mockito;
 
 import code4tarnovo.mockito.http.server.JettyServer;
 import code4tarnovo.mockito.http.servlet.Servlet;
-import com.google.common.base.Charsets;
-import com.google.common.io.Files;
 
 import javax.servlet.http.HttpServlet;
-import java.io.File;
-import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
