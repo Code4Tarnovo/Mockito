@@ -26,14 +26,12 @@ public class App {
         PersistentDestinationRepository repo = new PersistentDestinationRepository(dataStore);
         String content = "Architectural museum preserve Tsarevets is one of the most visited tourist sites Bulgaria. Located on Tsarevets Hill, which is located in the old town of Veliko Tarnovo. The fortress has three entrances that are seen today.";
         String indexPage = Files.toString(new File("resources/index.html"), Charsets.UTF_8);
+        String infoPage = Files.toString(new File("resources/info.html"), Charsets.UTF_8);
         repo.register(new Destination("b","b","d",content, (double) 4));
 
-        Destination destination = repo.getByName("b").get(0);
-        HtmlReplacer helper = new HtmlReplacer(indexPage);
-        String finalIndexPage = indexPage;
         Map<String, HttpServlet> servlets = new LinkedHashMap<String, HttpServlet>() {{
-            put("/", new IndexPageServlet(repo,helper));
-            put("/info", new IndexPageServlet(repo,helper));
+            put("/", new IndexPageServlet(repo, new HtmlReplacer(indexPage)));
+            put("/info", new IndexPageServlet(repo, new HtmlReplacer(infoPage)));
         }};
 
         JettyServer server = new JettyServer(8080, servlets);

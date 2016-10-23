@@ -31,8 +31,8 @@ public class IndexPageServlet extends HttpServlet {
         resp.setContentType("text/html");
         resp.setStatus(HttpServletResponse.SC_OK);
         PrintWriter writer = resp.getWriter();
-        HttpSession session = req.getSession();
 
+        String param = (req.getParameter("link"));
         List<Destination> destinations = repo.getAll();
 
         for (Destination each : destinations) {
@@ -41,9 +41,11 @@ public class IndexPageServlet extends HttpServlet {
                     + "</p><p>" + each.type
                     + "</p><p>" + each.adress
                     + "</p><p>" + each.name
-                    + "</p></div>" +
-                    "<a href=\"/?link="+each.name+">"+each.name+"</a>";
+                    + "</p><a href=\"/?link="+each.name+"\">"+each.name+"</a></div>";
             replacer.setValue("destintion",content);
+        }
+        if (param != null) {
+            req.setAttribute("info", req.getParameter("link"));
             resp.sendRedirect("/info");
         }
 

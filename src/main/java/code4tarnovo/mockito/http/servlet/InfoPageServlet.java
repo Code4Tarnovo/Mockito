@@ -33,6 +33,14 @@ public class InfoPageServlet extends HttpServlet {
         resp.setStatus(HttpServletResponse.SC_OK);
         PrintWriter writer = resp.getWriter();
 
+        String param = (req.getParameter("link"));
+
+        if(param != null) {
+            if (param.equals("home")) {
+                resp.sendRedirect("/");
+            }
+        }
+
         Destination destination = repo.getByName(req.getParameter("link")).get(0);
         replacer.setValue("name", destination.name);
         replacer.setValue("type", destination.type);
